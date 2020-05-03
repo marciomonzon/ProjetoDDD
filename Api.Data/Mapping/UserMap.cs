@@ -16,7 +16,7 @@ namespace Api.Data.Mapping
             builder.HasKey(p => p.Id);
             builder.HasIndex(p => p.Email)
                 .IsUnique();
-            builder.Property(u => u.Name)
+            builder.Property(u => u.Nome)
                 .IsRequired()
                 .HasMaxLength(60);
 
