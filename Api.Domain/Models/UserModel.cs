@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Api.Domain.Models
 {
-    public class UserModel
+	public class UserModel
     {
 		private Guid _id;
 
