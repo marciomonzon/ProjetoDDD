@@ -8,8 +8,14 @@ namespace Api.CrossCutting.Mappings
     {
         public DtoToModel()
         {
-            // faz model para dto e o inverso
             CreateMap<UserModel, UserDto>()
+                .ReverseMap();
+
+            // faz model para dto e o inverso
+            CreateMap<UserModel, UserDtoCreate>()
+                .ReverseMap();
+
+            CreateMap<UserModel, UserDtoUpdate>()
                 .ReverseMap();
         }
     }

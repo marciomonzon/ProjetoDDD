@@ -41,7 +41,7 @@ namespace Api.Services.Services
             return _mapper.Map<IEnumerable<UserDto>>(lstEntity);
         }
 
-        public async Task<UserDtoCreateResult> Post(UserDto user)
+        public async Task<UserDtoCreateResult> Post(UserDtoCreate user)
         {
             // exemplo de regra de negocio
             if (user.Nome == "TESTE")
@@ -55,7 +55,7 @@ namespace Api.Services.Services
             return _mapper.Map<UserDtoCreateResult>(result);
         }
 
-        public async Task<UserDtoUpdateResult> Put(UserDto user)
+        public async Task<UserDtoUpdateResult> Put(UserDtoUpdate user)
         {
             var model = _mapper.Map<UserModel>(user);
             var entity = _mapper.Map<UserEntity>(model);
