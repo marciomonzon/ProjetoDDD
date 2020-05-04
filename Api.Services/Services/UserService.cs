@@ -31,14 +31,14 @@ namespace Api.Services.Services
         {
             var entity = await _repository.SelectAsync(id);
 
-            return _mapper.Map<UserDto>(entity); 
+            return _mapper.Map<UserDto>(entity) ?? new UserDto(); 
         }
 
         public async Task<IEnumerable<UserDto>> GetAll()
         {
             var lstEntity = await _repository.SelectAsync();
 
-            return _mapper.Map<IEnumerable<UserDto>>(lstEntity);
+            return _mapper.Map<IEnumerable<UserDto>>(lstEntity) ?? new List<UserDto>();
         }
 
         public async Task<UserDtoCreateResult> Post(UserDtoCreate user)
