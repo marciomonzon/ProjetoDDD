@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using Api.CrossCutting.Mappings;
+using AutoMapper;
 
 namespace Api.Application
 {
@@ -24,7 +26,15 @@ namespace Api.Application
             ConfigRepository.ConfigureDependenciesRepository(services);
             ConfigService.ConfigureDependenciesService(services);
 
-            
+            var config = new AutoMapper.MapperConfiguration(cfg => 
+            {
+                cfg.AddProfile(new DtoToModel());
+                cfg.AddProfile(new EntityToDto());
+                cfg.AddProfile(new ModelToEntity());
+            });
+
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddControllers();
         }
